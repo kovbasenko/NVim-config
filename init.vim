@@ -61,9 +61,6 @@ set noequalalways
 au BufReadPost *.ts set syntax=javascript
 au BufReadPost *.tsx set syntax=javascript
 
-" TreeSitter
-autocmd VimEnter * exe ":TSEnable highlight"
-
 " Theme
 syntax enable
 if has('termguicolors')
