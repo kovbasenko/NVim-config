@@ -1,5 +1,7 @@
-require"modules.treesitter"
-require"modules.telescope"
-require"modules.hop"
-	
-
+require("modules.lspconfig")
+require("modules.cmp")
+require("modules.null-ls")
+require("modules.treesitter")
+require("modules.telescope")
+require("modules.hop")
+require("modules.autopairs")
