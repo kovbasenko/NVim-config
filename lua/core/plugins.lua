@@ -15,6 +15,22 @@ if packer_status_ok then
     { "sainnhe/everforest" },
     { "shaunsingh/nord.nvim" },
 
+    -- NeoScroll
+    {
+      "karb94/neoscroll.nvim",
+      config = function()
+        require "configs.neoscroll"
+      end,
+    },
+
+    -- Hop
+    {
+      "phaazon/hop.nvim",
+      config = function()
+        require "configs.hop"
+      end,
+    },
+
     -- Optimiser
     { "lewis6991/impatient.nvim" },
 

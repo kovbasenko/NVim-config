@@ -3,7 +3,7 @@ local M = {}
 function M.config()
   local status_ok, indent_blankline = pcall(require, "indent_blankline")
   if status_ok then
-    vim.g.indentLine_enabled = 1
+    vim.g.indent_blankline_enabled = 0
     vim.g.indent_blankline_show_trailing_blankline_indent = false
     vim.g.indent_blankline_show_first_indent_level = true
     vim.g.indent_blankline_use_treesitter = true

@@ -17,20 +17,27 @@ map("", "<right>", "", { noremap = true, silent = false })
 
 -- Normal --
 if utils.is_available "smart-splits.nvim" then
+  local sp = require "smart-splits"
+
   -- Better window navigation
   map("n", "<C-h>", function()
-    require("smart-splits").move_cursor_left()
+    sp.move_cursor_left()
   end, { desc = "Move to left split" })
   map("n", "<C-j>", function()
-    require("smart-splits").move_cursor_down()
+    sp.move_cursor_down()
   end, { desc = "Move to below split" })
   map("n", "<C-k>", function()
-    require("smart-splits").move_cursor_up()
+    sp.move_cursor_up()
   end, { desc = "Move to above split" })
   map("n", "<C-l>", function()
-    require("smart-splits").move_cursor_right()
+    sp.move_cursor_right()
   end, { desc = "Move to right split" })
 end
+
+-- Hop
+map("n", "<leader>sw", ":HopWord<CR>", { noremap = true, silent = true })
+map("n", "<leader>sc", ":HopChar1<CR>", { noremap = true, silent = true })
+map("n", "<leader>sl", ":HopLine<CR>", { noremap = true, silent = true })
 
 -- Navigate buffers
 if utils.is_available "bufferline.nvim" then
@@ -161,9 +168,9 @@ if utils.is_available "telescope.nvim" then
   map("n", "<leader>sk", function()
     require("telescope.builtin").keymaps()
   end, { desc = "Telescope search keymaps" })
-  map("n", "<leader>sc", function()
-    require("telescope.builtin").commands()
-  end, { desc = "Telescope search commands" })
+  -- map("n", "<leader>sc", function()
+  --   require("telescope.builtin").commands()
+  -- end, { desc = "Telescope search commands" })
   map("n", "<leader>ls", function()
     require("telescope.builtin").lsp_document_symbols()
   end, { desc = "Telescope search symbols" })
