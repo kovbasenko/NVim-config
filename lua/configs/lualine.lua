@@ -17,8 +17,6 @@ end
 function M.config()
   local status_ok, lualine = pcall(require, "lualine")
   if status_ok then
-    local colors = require "default_theme.colors"
-
     local conditions = {
       buffer_not_empty = function()
         return vim.fn.empty(vim.fn.expand "%:t") ~= 1
@@ -54,7 +52,7 @@ function M.config()
           {
             "branch",
             icon = "",
-            color = { fg = get_hl_prop("Conditional", "foreground", colors.purple_1), gui = "bold" },
+            color = { fg = get_hl_prop("Conditional", "foreground", "#a9a1e1"), gui = "bold" },
             padding = { left = 2, right = 1 },
           },
           {
@@ -101,7 +99,7 @@ function M.config()
           },
           {
             status.treesitter_status,
-            color = { fg = get_hl_prop("GitSignsAdd", "foreground", colors.green) },
+            color = { fg = get_hl_prop("GitSignsAdd", "foreground", "#98c379") },
             padding = { left = 1, right = 0 },
             cond = conditions.hide_in_width,
           },
@@ -117,7 +115,7 @@ function M.config()
           {
             status.progress_bar,
             padding = { left = 1, right = 2 },
-            color = { fg = get_hl_prop("TypeDef", "foreground", colors.yellow) },
+            color = { fg = get_hl_prop("TypeDef", "foreground", "#e5c07b") },
             cond = nil,
           },
         },
