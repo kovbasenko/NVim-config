@@ -58,6 +58,11 @@ function M.config()
             padding = { left = 2, right = 1 },
           },
           {
+            "filename",
+            file_status = true, -- displays file status (readonly status, modified status)
+            path = 0,
+          },
+          {
             "filetype",
             cond = conditions.buffer_not_empty,
             padding = { left = 2, right = 1 },

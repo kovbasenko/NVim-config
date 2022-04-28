@@ -78,23 +78,6 @@ end
 
 M.base_notification = { title = "AstroNvim" }
 
-function M.bootstrap()
-  local fn = vim.fn
-  local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-  if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system {
-      "git",
-      "clone",
-      "--depth",
-      "1",
-      "https://github.com/wbthomason/packer.nvim",
-      install_path,
-    }
-    print "Cloning packer...\nSetup AstroNvim"
-    vim.cmd "packadd packer.nvim"
-  end
-end
-
 function M.disabled_builtins()
   g.loaded_2html_plugin = false
   g.loaded_getscript = false

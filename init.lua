@@ -9,7 +9,7 @@ local utils = require "core.utils"
 
 utils.disabled_builtins()
 
-utils.bootstrap()
+-- utils.bootstrap()
 
 local sources = {
   "core.options",

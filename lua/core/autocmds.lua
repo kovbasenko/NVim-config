@@ -1,5 +1,11 @@
 local cmd = vim.cmd
 
+vim.api.nvim_create_autocmd("BufWritePost", {
+  desc = "Auto Compile plugins.lua file",
+  command = "source <afile> | PackerCompile",
+  pattern = "plugins.lua",
+})
+
 -- Custom settings
 -- cmd [[autocmd VimEnter * exe ":hi NeoTreeGitModified guifg=#7fbbb3 guibg=none"]]
 -- cmd [[autocmd VimEnter * exe ":hi NeoTreeGitAdded guifg=#a7c080 guibg=none"]]

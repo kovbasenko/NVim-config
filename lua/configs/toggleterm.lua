@@ -15,10 +15,12 @@ function M.config()
       persist_size = true,
       direction = "float",
       close_on_exit = true,
-      shell = vim.o.shell,
+      shell = "/bin/bash -l",
       float_opts = {
         border = "curved",
         winblend = 0,
+        width = 150,
+        height = 40,
         highlights = {
           border = "Normal",
           background = "Normal",

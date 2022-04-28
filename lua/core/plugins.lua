@@ -271,7 +271,6 @@ if packer_status_ok then
       disable = not config.enabled.gitsigns,
     },
 
-    -- Start screen
     {
       "glepnir/dashboard-nvim",
       config = function()
