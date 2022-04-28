@@ -33,7 +33,7 @@ if utils.is_available "smart-splits.nvim" then
     sp.move_cursor_right()
   end, { desc = "Move to right split" })
 end
-
+asdasdjkashdaskjdha
 -- Hop
 map("n", "<leader>sw", ":HopWord<CR>", { noremap = true, silent = true })
 map("n", "<leader>sc", ":HopChar1<CR>", { noremap = true, silent = true })
