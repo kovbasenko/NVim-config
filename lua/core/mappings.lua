@@ -45,6 +45,7 @@ if utils.is_available "bufferline.nvim" then
   map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous buffer tab" })
   map("n", "}", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer tab right" })
   map("n", "{", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer tab left" })
+  map("n", "<leader>oc", "<cmd>BufferLineCloseRight<cr> | <cmd>BufferLineCloseLeft<cr>", { desc = "Close other tabs" })
 else
   map("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Next buffer" })
   map("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
@@ -187,31 +188,6 @@ if utils.is_available "Comment.nvim" then
   map("n", "<leader>/", function()
     require("Comment.api").toggle_current_linewise()
   end, { desc = "Toggle comment line" })
-end
-
--- Terminal
-if utils.is_available "nvim-toggleterm.lua" then
-  map("n", "<leader>gg", function()
-    utils.toggle_term_cmd "lazygit"
-  end, { desc = "ToggleTerm lazygit" })
-  map("n", "<leader>tn", function()
-    utils.toggle_term_cmd "node"
-  end, { desc = "ToggleTerm node" })
-  map("n", "<leader>tu", function()
-    utils.toggle_term_cmd "ncdu"
-  end, { desc = "ToggleTerm NCDU" })
-  map("n", "<leader>tt", function()
-    utils.toggle_term_cmd "htop"
-  end, { desc = "ToggleTerm htop" })
-  map("n", "<leader>tp", function()
-    utils.toggle_term_cmd "python"
-  end, { desc = "ToggleTerm python" })
-  map("n", "<leader>tl", function()
-    utils.toggle_term_cmd "lazygit"
-  end, { desc = "ToggleTerm lazygit" })
-  map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "ToggleTerm float" })
-  map("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { desc = "ToggleTerm horizontal split" })
-  map("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", { desc = "ToggleTerm vertical split" })
 end
 
 -- SymbolsOutline

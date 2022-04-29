@@ -11,6 +11,7 @@ local function file_not_empty(path)
   return vim.fn.empty(vim.fn.glob(path)) == 0
 end
 
+-- Load Module
 local function load_module_file(module)
   local found_module = nil
   for _, config_path in ipairs(supported_configs) do
@@ -30,6 +31,7 @@ local function load_module_file(module)
   return found_module
 end
 
+-- Load User Settings
 local function load_user_settings()
   local user_settings = load_module_file "user.init"
   local defaults = require "core.defaults"
@@ -38,10 +40,7 @@ local function load_user_settings()
   end
   return defaults
 end
-
 local _user_settings = load_user_settings()
-
-M.user_terminals = {}
 
 local function func_or_extend(overrides, default)
   if default == nil then
@@ -76,7 +75,7 @@ local function load_options(module, default)
   return default
 end
 
-M.base_notification = { title = "AstroNvim" }
+M.base_notification = { title = "Nvim" }
 
 function M.disabled_builtins()
   g.loaded_2html_plugin = false
@@ -141,23 +140,6 @@ function M.list_registered_linters(filetype)
   return registered_providers[formatter_method] or {}
 end
 
--- term_details can be either a string for just a command or
--- a complete table to provide full access to configuration when calling Terminal:new()
-function M.toggle_term_cmd(term_details)
-  if type(term_details) == "string" then
-    term_details = { cmd = term_details, hidden = true }
-  end
-  local term_key = term_details.cmd
-  if vim.v.count > 0 and term_details.count == nil then
-    term_details.count = vim.v.count
-    term_key = term_key .. vim.v.count
-  end
-  if M.user_terminals[term_key] == nil then
-    M.user_terminals[term_key] = require("toggleterm.terminal").Terminal:new(term_details)
-  end
-  M.user_terminals[term_key]:toggle()
-end
-
 function M.add_cmp_source(source, priority)
   if type(priority) ~= "number" then
     priority = 1000
@@ -187,25 +169,6 @@ end
 
 function M.is_available(plugin)
   return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
-end
-
-function M.update()
-  local Job = require "plenary.job"
-
-  Job
-    :new({
-      command = "git",
-      args = { "pull", "--ff-only" },
-      cwd = vim.fn.stdpath "config",
-      on_exit = function(_, return_val)
-        if return_val == 0 then
-          vim.notify("Updated!", "info", M.base_notification)
-        else
-          vim.notify("Update failed! Please try pulling manually.", "error", M.base_notification)
-        end
-      end,
-    })
-    :sync()
 end
 
 return M

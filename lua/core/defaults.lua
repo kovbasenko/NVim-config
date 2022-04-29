@@ -9,10 +9,6 @@ local config = {
     virtual_text = true,
   },
 
-  default_theme = {
-    diagnostics_style = {},
-  },
-
   enabled = {
     bufferline = true,
     neo_tree = true,
@@ -24,7 +20,6 @@ local config = {
     symbols_outline = true,
     indent_blankline = true,
     dashboard = true,
-    which_key = true,
     neoscroll = true,
     ts_rainbow = true,
     ts_autotag = true,

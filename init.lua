@@ -9,8 +9,6 @@ local utils = require "core.utils"
 
 utils.disabled_builtins()
 
--- utils.bootstrap()
-
 local sources = {
   "core.options",
   "core.plugins",
@@ -34,9 +32,4 @@ if status_ok then
       ui[ui_addition]()
     end
   end
-end
-
-local polish = utils.user_plugin_opts "polish"
-if type(polish) == "function" then
-  polish()
 end

@@ -1,5 +1,6 @@
 local M = {}
 
+-- Setup
 function M.setup()
   local signs = {
     { name = "DiagnosticSignError", text = "" },
@@ -41,6 +42,7 @@ function M.setup()
   })
 end
 
+-- Highlight on Hover
 local function lsp_highlight_document(client)
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec(
@@ -56,6 +58,7 @@ local function lsp_highlight_document(client)
   end
 end
 
+-- On Attach
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
     client.resolved_capabilities.document_formatting = false
