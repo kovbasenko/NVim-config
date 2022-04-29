@@ -1,7 +1,3 @@
-local config = {
-
-  -- Set colorscheme
-  colorscheme = "nord",
-}
+local config = {}
 
 return config

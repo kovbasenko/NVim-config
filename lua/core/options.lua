@@ -1,11 +1,13 @@
 local M = {}
 
 local utils = require "core.utils"
-local colorscheme = utils.user_plugin_opts "colorscheme"
+local colorscheme = "nord"
+-- local colorscheme = utils.user_plugin_opts "colorscheme"
 
 local set = vim.opt
 local g = vim.g
 
+-- g.nord_italic = 0
 vim.api.nvim_command(("colorscheme %s"):format(colorscheme))
 
 set.fileencoding = "utf-8" -- File content encoding for the buffer
