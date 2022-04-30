@@ -66,12 +66,6 @@ function M.config()
             padding = { left = 2, right = 1 },
           },
           {
-            "diff",
-            symbols = { added = " ", modified = "柳", removed = " " },
-            cond = conditions.hide_in_width,
-            padding = { left = 2, right = 1 },
-          },
-          {
             "diagnostics",
             sources = { "nvim_diagnostic" },
             symbols = { error = " ", warn = " ", info = " ", hint = " " },
@@ -84,6 +78,12 @@ function M.config()
           },
         },
         lualine_x = {
+          {
+            "diff",
+            symbols = { added = " ", modified = "柳", removed = " " },
+            cond = conditions.hide_in_width,
+            padding = { left = 2, right = 1 },
+          },
           {
             status.lsp_progress,
             color = { gui = "none" },

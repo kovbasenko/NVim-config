@@ -15,14 +15,6 @@ if packer_status_ok then
     { "sainnhe/everforest" },
     { "shaunsingh/nord.nvim" },
 
-    -- NeoScroll
-    {
-      "karb94/neoscroll.nvim",
-      config = function()
-        require "configs.neoscroll"
-      end,
-    },
-
     -- Hop
     {
       "phaazon/hop.nvim",
@@ -195,6 +187,19 @@ if packer_status_ok then
       after = "nvim-cmp",
       config = function()
         require("core.utils").add_user_cmp_source "luasnip"
+      end,
+    },
+
+    -- CMP Kind
+    {
+      "onsails/lspkind.nvim",
+    },
+
+    {
+      "hrsh7th/cmp-nvim-lsp-signature-help",
+      after = "nvim-cmp",
+      config = function()
+        require("core.utils").add_user_cmp_source "nvim_lsp_signature_help"
       end,
     },
 

@@ -3,43 +3,24 @@ local M = {}
 function M.config()
   local cmp_status_ok, cmp = pcall(require, "cmp")
   local snip_status_ok, luasnip = pcall(require, "luasnip")
+  local lspkind = require "lspkind"
   if cmp_status_ok and snip_status_ok then
-    local kind_icons = {
-      Text = "",
-      Method = "",
-      Function = "",
-      Constructor = "",
-      Field = "ﰠ",
-      Variable = "",
-      Class = "",
-      Interface = "",
-      Module = "",
-      Property = "",
-      Unit = "",
-      Value = "",
-      Enum = "",
-      Keyword = "",
-      Snippet = "",
-      Color = "",
-      File = "",
-      Reference = "",
-      Folder = "",
-      EnumMember = "",
-      Constant = "",
-      Struct = "פּ",
-      Event = "",
-      Operator = "",
-      TypeParameter = "",
-    }
-
     cmp.setup(require("core.utils").user_plugin_opts("plugins.cmp", {
       preselect = cmp.PreselectMode.None,
       formatting = {
-        fields = { "kind", "abbr", "menu" },
-        format = function(_, vim_item)
-          vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-          return vim_item
-        end,
+        fields = { "abbr", "kind", "menu" },
+        format = lspkind.cmp_format {
+          menu = {
+            nvim_lsp_signature_help = " [Args]",
+            nvim_lsp = " [Lsp]",
+            luasnip = " [Snip]",
+            buffer = " [Buff]",
+          },
+        },
+        -- format = function(_, vim_item)
+        --   vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+        --   return vim_item
+        -- end,
       },
       completion = {
         completeopt = "menu,menuone,noinsert",
@@ -60,14 +41,24 @@ function M.config()
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,
       },
-      window = {},
+      window = {
+        -- completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
       experimental = {
         ghost_text = true,
         native_menu = false,
       },
       mapping = {
-        ["<Up>"] = cmp.mapping.select_prev_item(),
-        ["<Down>"] = cmp.mapping.select_next_item(),
+        ["<Up>"] = {
+          i = cmp.mapping.abort(),
+          c = cmp.mapping.close(),
+        },
+        ["<Down>"] = {
+
+          i = cmp.mapping.abort(),
+          c = cmp.mapping.close(),
+        },
         ["<C-p>"] = cmp.mapping.select_prev_item(),
         ["<C-n>"] = cmp.mapping.select_next_item(),
         ["<C-k>"] = cmp.mapping.select_prev_item(),

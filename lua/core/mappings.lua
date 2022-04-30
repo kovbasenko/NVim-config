@@ -15,6 +15,10 @@ map("", "<down>", "", { noremap = true, silent = false })
 map("", "<left>", "", { noremap = true, silent = false })
 map("", "<right>", "", { noremap = true, silent = false })
 
+map("n", "<S-k>", "4k")
+map("n", "<S-j>", "4j")
+map("n", "<Esc>", "<cmd>nohlsearch<CR> | <cmd>echo ''<CR>")
+
 -- Normal --
 if utils.is_available "smart-splits.nvim" then
   local sp = require "smart-splits"
@@ -43,18 +47,13 @@ map("n", "<leader>sl", ":HopLine<CR>", { noremap = true, silent = true })
 if utils.is_available "bufferline.nvim" then
   map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer tab" })
   map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous buffer tab" })
-  map("n", "}", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer tab right" })
-  map("n", "{", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer tab left" })
+  -- map("n", "}", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer tab right" })
+  -- map("n", "{", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer tab left" })
   map("n", "<leader>oc", "<cmd>BufferLineCloseRight<cr> | <cmd>BufferLineCloseLeft<cr>", { desc = "Close other tabs" })
 else
   map("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Next buffer" })
   map("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 end
-
--- LSP
-map("n", "K", vim.lsp.buf.hover, { desc = "Hover symbol details" })
--- <leader>rn: legacy binding here for backwards compatibility but not in which-key (see <leader>lr)
-map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename current symbol" })
 
 -- Fast commands
 map("n", "<leader>a", "<cmd>qa!<CR>")
@@ -64,13 +63,9 @@ if utils.is_available "nvim-toggleterm.lua" then
   map("n", "<C-\\>", "<cmd>ToggleTerm<CR>", { desc = "Toggle terminal" })
 end
 
--- Normal Leader Mappings --
--- Allows easy user modifications when just overriding which-key
--- But allows bindings to work for users without which-key
 -- Standard Operations
 map("n", "<leader>w", "<cmd>w<CR>", { desc = "Write" })
 map("n", "<leader>q", "<cmd>q<CR>", { desc = "Quite" })
-map("n", "<leader>h", "<cmd>nohlsearch<CR>", { desc = "Disable search highlight" })
 
 if utils.is_available "vim-bbye" then
   map("n", "<leader>c", "<cmd>Bdelete!<CR>", { desc = "Delete buffer" })
@@ -78,16 +73,16 @@ end
 
 -- LSP
 map("n", "<leader>lf", vim.lsp.buf.formatting_sync, { desc = "Format code" })
-map("n", "<leader>la", vim.lsp.buf.code_action, { desc = "LSP code action" })
+map("n", "<leader>ll", vim.lsp.buf.implementation, { desc = "LSP code action" })
 map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename current symbol" })
 map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Hover diagnostics" })
-map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration of current symbol" })
+map("n", "<leader>k", vim.lsp.buf.hover, { desc = "Hover symbol details" })
+map("n", "<leader>la", vim.lsp.buf.code_action, { desc = "LSP code action" })
 map("n", "gd", vim.lsp.buf.definition, { desc = "Show the definition of current symbol" })
-map("n", "gI", vim.lsp.buf.implementation, { desc = "Go to implementation of current symbol" })
-map("n", "gr", vim.lsp.buf.references, { desc = "References of current symbol" })
-map("n", "gl", vim.diagnostic.open_float, { desc = "Hover diagnostics" })
-map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+-- map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration of current symbol" })
+-- map("n", "gr", vim.lsp.buf.references, { desc = "References of current symbol" })
+map("n", "{", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+map("n", "}", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 
 -- GitSigns
 if utils.is_available "gitsigns.nvim" then

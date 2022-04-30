@@ -1,13 +1,10 @@
 local M = {}
 
-local utils = require "core.utils"
-local colorscheme = "nord"
--- local colorscheme = utils.user_plugin_opts "colorscheme"
-
 local set = vim.opt
 local g = vim.g
 
--- g.nord_italic = 0
+local colorscheme = "nord"
+g.nord_italic = false
 vim.api.nvim_command(("colorscheme %s"):format(colorscheme))
 
 set.fileencoding = "utf-8" -- File content encoding for the buffer
@@ -51,5 +48,9 @@ set.fillchars = { eob = " " } -- Disable `~` on nonexistent lines
 
 g.do_filetype_lua = 1 -- use filetype.lua
 g.did_load_filetypes = 0 -- don't use filetype.vim
+
+g.minimap_width = 10
+g.minimap_auto_start = 1
+g.minimap_auto_start_win_enter = 1
 
 return M

@@ -1,3 +1,4 @@
-local config = {}
+local config = {
+}
 
 return config
