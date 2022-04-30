@@ -24,12 +24,3 @@ for _, source in ipairs(sources) do
     utils.compiled()
   end
 end
-
-local status_ok, ui = pcall(require, "core.ui")
-if status_ok then
-  for ui_addition, enabled in pairs(utils.user_settings().ui) do
-    if enabled and type(ui[ui_addition]) == "function" then
-      ui[ui_addition]()
-    end
-  end
-end
