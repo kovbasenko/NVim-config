@@ -4,7 +4,11 @@ function M.config()
   local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
   if status_ok then
     treesitter.setup(require("core.utils").user_plugin_opts("plugins.treesitter", {
-      ensure_installed = {},
+      ensure_installed = {
+        "typescript",
+        "javascript",
+        "tsx",
+      },
       sync_install = false,
       ignore_install = {},
       highlight = {

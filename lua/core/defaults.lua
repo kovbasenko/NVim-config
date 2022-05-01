@@ -25,16 +25,6 @@ local config = {
     ts_autotag = true,
   },
 
-  cmp = {
-    source_priority = {
-      nvim_lsp_signature_help = 1250,
-      nvim_lsp = 1000,
-      luasnip = 750,
-      buffer = 500,
-      path = 250,
-    },
-  },
-
   ui = {
     nui_input = true,
     telescope_select = true,
