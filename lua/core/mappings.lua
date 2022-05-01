@@ -5,6 +5,7 @@ local utils = require "core.utils"
 local map = vim.keymap.set
 local cmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
+local silent = { silent = true }
 
 -- Remap space as leader key
 vim.g.mapleader = ","
@@ -66,6 +67,14 @@ end
 -- Standard Operations
 map("n", "<leader>w", "<cmd>w<CR>", { desc = "Write" })
 map("n", "<leader>q", "<cmd>q<CR>", { desc = "Quite" })
+
+-- Move lines
+map("n", "<A-k>", "<cmd>m .-2<CR>==", silent)
+map("n", "<A-j>", "<cmd>m .+1<CR>==", silent)
+map("i", "<A-k>", "<cmd>m .-2==gi<CR>", silent)
+map("i", "<A-j>", "<cmd>m .+1==gi<CR>", silent)
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", silent)
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", silent)
 
 if utils.is_available "vim-bbye" then
   map("n", "<leader>c", "<cmd>Bdelete!<CR>", { desc = "Delete buffer" })
