@@ -40,6 +40,16 @@ map("n", "<leader>w", "<cmd>w<CR>", { desc = "Write" })
 map("n", "<leader>q", "<cmd>q<CR>", { desc = "Quite" })
 map("n", "<leader>a", "<cmd>qa!<CR>", { desc = "Abaddon" })
 
+-- Search Replace in a current buffer
+map("n", "<leader>r", ":%s///g<left><left>")
+map("n", "<leader>rc", ":%s///gc<left><left><left>")
+-- Replace on selected area
+map("x", "<leader>r", ":s///g<left><left>")
+map("x", "<leader>rc", ":s///gc<left><left><left>")
+-- Replace current + "."
+map("n", "s*", ":let @/='\\<'.expand('<cword>').'\\>'<CR>cgn", silent)
+map("x", "s*", '"sy:let @/=@s<CR>cgn', silent)
+
 -- Move lines
 map("n", "<A-K>", "<cmd>m .-2<CR>==", silent)
 map("n", "<A-J>", "<cmd>m .+1<CR>==", silent)

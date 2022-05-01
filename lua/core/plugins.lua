@@ -15,6 +15,9 @@ if packer_status_ok then
     { "sainnhe/everforest" },
     { "shaunsingh/nord.nvim" },
 
+    -- Search by selected text
+    { "nelstrom/vim-visual-star-search" },
+
     -- Hop
     {
       "phaazon/hop.nvim",
@@ -271,6 +274,9 @@ if packer_status_ok then
       "nvim-telescope/telescope.nvim",
       cmd = "Telescope",
       module = "telescope",
+      config = function()
+        require("configs.telescope").config()
+      end,
     },
 
     -- Git integration

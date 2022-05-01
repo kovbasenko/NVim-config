@@ -118,13 +118,13 @@ function M.config()
     },
   })
 
-  cmp.setup.cmdline("/", {
-    completion = { completeopt = "menu,menuone,noinsert" },
-    mapping = mapping,
-    sources = {
-      { name = "buffer" },
-    },
-  })
+  -- cmp.setup.cmdline("/", {
+  --   completion = { completeopt = "menu,menuone,noinsert" },
+  --   mapping = mapping,
+  --   sources = {
+  --     { name = "buffer" },
+  --   },
+  -- })
 end
 
 return M
