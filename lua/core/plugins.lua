@@ -163,6 +163,12 @@ if packer_status_ok then
       after = "nvim-cmp",
     },
 
+    -- Cmp Cmdline
+    {
+      "hrsh7th/cmp-cmdline",
+      after = "nvim-cmp",
+    },
+
     -- Snippet engine
     {
       "L3MON4D3/LuaSnip",
