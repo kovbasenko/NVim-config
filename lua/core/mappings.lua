@@ -37,8 +37,9 @@ map("n", "<C-\\>", "<cmd>ToggleTerm<CR>", { desc = "Toggle terminal" })
 
 -- Standard Operations
 map("n", "<leader>w", "<cmd>w<CR>", { desc = "Write" })
-map("n", "<leader>q", "<cmd>q<CR>", { desc = "Quite" })
-map("n", "<leader>a", "<cmd>qa!<CR>", { desc = "Abaddon" })
+map("n", "<A-W>", "<cmd>wa<CR>", { desc = "Write All" })
+map("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
+map("n", "<leader>a", "<cmd>qa!<CR>", { desc = "Force quit all" })
 
 -- Search Replace in a current buffer
 map("n", "<leader>r", ":%s///g<left><left>")
@@ -112,17 +113,6 @@ map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Telescope search 
 
 -- Comment
 map("n", "<leader>/", require("Comment.api").toggle_current_linewise, { desc = "Toggle comment line" })
-
--- SymbolsOutline
-map("n", "<leader>lS", "<cmd>SymbolsOutline<CR>", { desc = "Symbols outline" })
-
--- Comment
-map(
-  "v",
-  "<leader>/",
-  "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>",
-  { desc = "Toggle comment line" }
-)
 
 function _G.set_terminal_keymaps()
   vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], { desc = "Terminal normal mode" })

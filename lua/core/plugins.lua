@@ -250,16 +250,6 @@ if packer_status_ok then
       end,
     },
 
-    -- LSP symbols
-    {
-      "simrat39/symbols-outline.nvim",
-      cmd = "SymbolsOutline",
-      setup = function()
-        require("configs.symbols-outline").setup()
-      end,
-      disable = not config.enabled.symbols_outline,
-    },
-
     -- Formatting and linting
     {
       "jose-elias-alvarez/null-ls.nvim",

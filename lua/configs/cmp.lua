@@ -10,7 +10,6 @@ function M.config()
       c = cmp.mapping.close(),
     },
     ["<Down>"] = {
-
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
@@ -105,7 +104,6 @@ function M.config()
         { name = "buffer", priority = 500 },
         { name = "path", priority = 250 },
       },
-
       mapping = mapping,
     }))
   end
